@@ -1,0 +1,7 @@
+Okay so great basically the game works.
+
+TODO debug why the points dont get added when the other strats that arent tit for tat are called.
+
+Figure out how to make the round numbers print correctly so they start and end at same time. 
+
+Clean up user interface. 
