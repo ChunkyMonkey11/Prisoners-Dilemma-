@@ -24,46 +24,20 @@ def play_game():
     """)    
 
 
-    # Setting Intital Variables 
-    rounds = None
-    users_choice = None
-    computer_strategy = None
-
-    # User Inputs Desired Rounds and setting rounds to selected_rounds
-    selected_rounds = int(input("How many Rounds Would You Like to Play?:"))
-    rounds = selected_rounds
     
-    # User Decides Which Strategy They Want
-    def get_strat():
-        print(""" 
-        Here are the different strategies you can play against. Input is on Left and Option is on right. 
-        1: always cooperate
-        2: always defect
-        3: tit_for_tat
-        4: random 
-        """)
-
-        selected_strat = int(input("What Strategy Did You Select?: "))
-
-
+    # User Inputs Desired Rounds and setting rounds to selected_rounds
+    total_rounds = int(input("How many Rounds Would You Like to Play?:"))
+    
+    
+    # Function that randomly selects computer strategy to run. Return name of function to be called. 
+    def random_strat():
         """
-        Figure out how to return the strategy. If it should be a string with the function name or the actual function call.
-        This return should be placed inside computer_strategy.
+        The purpose of this function is to randomly select computer strategy for game.
         """
-        if selected_strat == int(4):
-            
-            return
+        return random.choice(["always_cooperate", "always_defect", "tit_for_tat"])
 
-        
-
-
-
-
-
-
-
-
-
+    # Strategy Selected
+    computer_strategy = random_strat()
 
     # Computer Algorithm that always cooperates
     def always_cooperate():
@@ -73,6 +47,7 @@ def play_game():
     def always_defect():
         return "betray"
 
+    # Computer Algorithm that follows tit for tat logic
     def tit_for_tat(previous_user_choice):
         return "cooperate" if previous_user_choice == None else previous_user_choice
 
@@ -85,19 +60,35 @@ def play_game():
         ("betray", "betray"): (1, 1)
         }
         return
+     
+    def get_user_choice():
+        while True:
+            user_choice = input("Do you want to Cooperate or Defect? ").strip().lower()
+            if user_choice in ["cooperate", "defect"]:
+                return user_choice
+            else:
+                print("Invalid choice. Please enter 'Cooperate' or 'Defect'.")
 
-    # Random_Stat Function that will decide for the user which Stategy To Play Against.
-    def random_strat():
-        random_number = random.randint(1,3)
-        return random_number
+
+        
+
+
+    """
+    Figure out what goes down below???
+
+    """
+    for round_num in range(total_rounds + 1):  
+        """
+        Within the loop prompt user for chouce
+        Use an if-elif-else statement to call the correct computer strategy based on the chosen strategy.
+
+        """
+        print(round_num)
     
 
+    
+    
+    
+    
 
-   
-   
-
-
-
-
-    return
-
+play_game()
